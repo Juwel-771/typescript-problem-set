@@ -36,19 +36,22 @@ var Person = /** @class */ (function () {
     };
     return Person;
 }());
-function filterByRating(items) {
-    var result = [];
-    for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
-        var item = items_1[_i];
+function filterByRating(data) {
+    var resultValue = [];
+    for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
+        var item = data_1[_i];
         if (item.rating >= 4) {
-            result.push(item);
+            resultValue.push(item);
         }
     }
-    return result;
+    return resultValue;
 }
-var books = [
-    { title: 'Book A', rating: 4.5 },
-    { title: 'Book B', rating: 3.2 },
-    { title: 'Book C', rating: 5.0 },
+function filterActiveUsers(userData) {
+    return userData.filter(function (user) { return user.isActive === true; });
+}
+var users = [
+    { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
+    { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
+    { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
 ];
-console.log(filterByRating(books));
+console.log(filterActiveUsers(users));
