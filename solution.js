@@ -49,9 +49,14 @@ function filterByRating(data) {
 function filterActiveUsers(userData) {
     return userData.filter(function (user) { return user.isActive === true; });
 }
-var users = [
-    { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
-    { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
-    { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
-];
-console.log(filterActiveUsers(users));
+function printBookDetails(booksData) {
+    var bookAvailability = booksData.isAvailable ? "Yes" : "No";
+    console.log("Title: ".concat(booksData.title, ", \n                Author: ").concat(booksData.author, ", \n                Published: ").concat(booksData.publishedYear, ", \n                Available: ").concat(bookAvailability));
+}
+var myBook = {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    publishedYear: 1925,
+    isAvailable: true,
+};
+printBookDetails(myBook);
