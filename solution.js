@@ -11,6 +11,17 @@ function formatValue(value) {
 console.log(formatValue("Hello"));
 console.log(formatValue(5));
 console.log(formatValue(true));
-console.log(formatValue("juwel"));
-console.log(formatValue(8));
-console.log(formatValue(false));
+// ? Problem 2
+function getLength(data) {
+    if (typeof data === "string") {
+        return data.length;
+    }
+    if (Array.isArray(data)) {
+        return data.length;
+    }
+    return 0;
+}
+console.log(getLength('Hello World')); // Output: 11
+console.log(getLength([1, 2, 3, 4, 5])); // Output: 5
+console.log(getLength('')); // Output: 0
+console.log(getLength([])); // Output: 0
