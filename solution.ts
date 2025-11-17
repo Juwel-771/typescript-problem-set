@@ -11,10 +11,6 @@ function formatValue(value: number | string | boolean):number | string | boolean
     return !value;
 }
 
-// console.log(formatValue("Hello"));
-// console.log(formatValue(5));
-// console.log(formatValue(true));
-
 // ? Problem 2
 function getLength(data: string | any[]):number{
     
@@ -28,11 +24,6 @@ function getLength(data: string | any[]):number{
 
     return 0;
 }
-
-// console.log(getLength('Hello World'));       // Output: 11
-// console.log(getLength([1, 2, 3, 4, 5]));    // Output: 5
-// console.log(getLength(''));                  // Output: 0
-// console.log(getLength([]));                  // Output: 0
 
 // ? Problem 3:
 class Person{
@@ -49,8 +40,6 @@ class Person{
     }
 }
 
-// const person1 = new Person('Juwel Meherab', 26);
-// console.log(person1.getDetails());
 
 // ? Problem 4:
 type Items = {
@@ -72,13 +61,6 @@ function filterByRating(data: Items[]): Items[]{
 
 }
 
-// const books = [
-//   { title: 'Book A', rating: 4.5 },
-//   { title: 'Book B', rating: 3.2 },
-//   { title: 'Book C', rating: 5.0 },
-// ];
-// console.log(filterByRating(books));
-
 // ? Problem 5:
 type User = {
     id: number;
@@ -91,12 +73,6 @@ function filterActiveUsers(userData: User[]):User[]{
     return userData.filter(user=>user.isActive===true);
 }
 
-// const users = [
-//   { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
-//   { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
-//   { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
-// ];
-// console.log(filterActiveUsers(users));
 
 // ? Problem 6: 
 interface Book {
@@ -105,17 +81,65 @@ interface Book {
     publishedYear: number;
     isAvailable: boolean;
 }
-
+ 
 function printBookDetails(booksData: Book):void{
 
     const bookAvailability = booksData.isAvailable ? "Yes" : "No";
     console.log(`Title: ${booksData.title}, Author: ${booksData.author}, Published: ${booksData.publishedYear}, Available: ${bookAvailability}`);
 }
 
-const myBook: Book = {
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    publishedYear: 1925,
-    isAvailable: true,
+
+// ? Problem 7: 
+function getUniqueValues(valueOne: (number | string)[], valueTwo: (number | string)[]): (number | string)[] {
+    
+    const uniqueValue: (number | string)[] = [];
+    function existsData(data: number | string): boolean {
+        for (let i = 0; i < uniqueValue.length; i++) {
+            if (uniqueValue[i] === data) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    for (let i = 0; i < valueOne.length; i++) {
+        if (!existsData(valueOne[i])) {
+            uniqueValue[uniqueValue.length] = valueOne[i];
+        }
+    }
+
+    for (let i = 0; i < valueTwo.length; i++) {
+        if (!existsData(valueTwo[i])) {
+            uniqueValue[uniqueValue.length] = valueTwo[i];
+        }
+    }
+
+    return uniqueValue;
+}
+
+// ? Problem 8
+type Product = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
 };
-printBookDetails(myBook);
+
+function calculateTotalPrice(products: Product[]): number {
+    if (products.length === 0) return 0;
+
+    return products
+        .map(product => {
+            const grossValue = product.price * product.quantity;
+
+            if (product.discount !== undefined) {
+                const discountPay = grossValue * (product.discount / 100);
+                return grossValue - discountPay;
+            }
+
+            return grossValue;
+        })
+        .reduce((total, current) => total + current, 0);
+}
+
+
