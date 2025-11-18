@@ -1,4 +1,3 @@
-// ? Problem 1
 function formatValue(value: number | string | boolean):number | string | boolean{
     if(typeof value === "string"){
         return value.toUpperCase()
@@ -11,7 +10,6 @@ function formatValue(value: number | string | boolean):number | string | boolean
     return !value;
 }
 
-// ? Problem 2
 function getLength(data: string | any[]):number{
     
     if(typeof data === "string"){
@@ -25,7 +23,6 @@ function getLength(data: string | any[]):number{
     return 0;
 }
 
-// ? Problem 3:
 class Person{
     public name: string;
     public age: number;
@@ -41,7 +38,6 @@ class Person{
 }
 
 
-// ? Problem 4:
 type Items = {
     title: string;
     rating: number;
@@ -61,7 +57,6 @@ function filterByRating(data: Items[]): Items[]{
 
 }
 
-// ? Problem 5:
 type User = {
     id: number;
     name: string; 
@@ -74,7 +69,6 @@ function filterActiveUsers(userData: User[]):User[]{
 }
 
 
-// ? Problem 6: 
 interface Book {
     title: string;
     author: string;
@@ -89,7 +83,6 @@ function printBookDetails(booksData: Book):void{
 }
 
 
-// ? Problem 7: 
 function getUniqueValues(valueOne: (number | string)[], valueTwo: (number | string)[]): (number | string)[] {
     
     const uniqueValue: (number | string)[] = [];
@@ -117,7 +110,7 @@ function getUniqueValues(valueOne: (number | string)[], valueTwo: (number | stri
     return uniqueValue;
 }
 
-// ? Problem 8
+
 type Product = {
     name: string;
     price: number;
