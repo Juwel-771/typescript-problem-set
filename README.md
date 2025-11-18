@@ -27,8 +27,36 @@ TypeScript-এ any, unknown, আর never তিনটি বিশেষ টা
 
 any = টাইপ-চেকিং বন্ধ করে দেয়, সবকিছু গ্রহণ করে; unsafe।
 
+উদাহরণঃ
+let anyValue: any;
+
+any দিয়ে যেকোনো টাইপের ভ্যালু রাখা যায়
+
+anyValue = "জুয়েল";           //* string
+anyValue = 20;                //*  number
+anyValue = true;               //*  boolean
+anyValue = { name: "Meherab" };  //*  object
+anyValue = [1, 2, 3];          //*  array
+
+
+
 unknown = যেকোনো মান থাকতে পারে এবং টাইপ চেক বাধ্যতামূলক - ব্যবহারের আগে টাইপ যাচাই করে নিতে হয়। এটিকে API ডেটা, ইউজার ইনপুট এ সাধারণত ব্যবহার হয়; safe(er) any।
+
+উদাহরণঃ
+let unknownValue: unknown;
+
+unknown দিয়েও যেকোনো টাইপের ভ্যালু রাখা যায়
+
+unknownValue = "Meherab";        //* string
+unknownValue = 200;             //* number
+unknownValue = false;           //* boolean
+unknownValue = { city: "ঢাকা" }; //* object
+
 
 never = এমন টাইপ যার কোনো ভলিউম নেই — কোন ভ্যালু কখনই থাকতে পারে না অর্থাৎ কোনো ভ্যালু রিটার্ন করে না। এরর থ্রো করা ফাংশনে ব্যবহার হয় এবং টাইপ সিস্টেমে exhaustive checking এ সাহায্য করে। 
 
-
+// never ব্যবহার ১: এরর থ্রো করা ফাংশন
+function throwError(message: string): never {
+    throw new Error(message);
+    // এই ফাংশন কখনো স্বাভাবিকভাবে শেষ হয় না
+}
